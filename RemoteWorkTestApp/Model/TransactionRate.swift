@@ -9,5 +9,7 @@
 import Foundation
 
 struct TransactionRate {
-    
+    let from: String
+    let to: String
+    let rate: Float
 }

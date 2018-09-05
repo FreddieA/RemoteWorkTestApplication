@@ -21,6 +21,7 @@
 		42907ED621402B4000AA72B7 /* PlistDataParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */; };
 		42907EDA21402B8300AA72B7 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED921402B8300AA72B7 /* TransactionsStorage.swift */; };
 		42907EDC21402B9F00AA72B7 /* RatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907EDB21402B9F00AA72B7 /* RatesManager.swift */; };
+		42907EDF214040B600AA72B7 /* TransactionsStorage+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907EDE214040B600AA72B7 /* TransactionsStorage+UITableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistDataParserProtocol.swift; sourceTree = "<group>"; };
 		42907ED921402B8300AA72B7 /* TransactionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsStorage.swift; sourceTree = "<group>"; };
 		42907EDB21402B9F00AA72B7 /* RatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesManager.swift; sourceTree = "<group>"; };
+		42907EDE214040B600AA72B7 /* TransactionsStorage+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionsStorage+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,11 +158,20 @@
 		42907ECE21402AA300AA72B7 /* DataManipulation */ = {
 			isa = PBXGroup;
 			children = (
+				42907EDD2140407400AA72B7 /* Extensions */,
 				42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */,
 				42907ED921402B8300AA72B7 /* TransactionsStorage.swift */,
 				42907EDB21402B9F00AA72B7 /* RatesManager.swift */,
 			);
 			path = DataManipulation;
+			sourceTree = "<group>";
+		};
+		42907EDD2140407400AA72B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				42907EDE214040B600AA72B7 /* TransactionsStorage+UITableViewDataSource.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				42907ED621402B4000AA72B7 /* PlistDataParserProtocol.swift in Sources */,
 				42907ED021402AC900AA72B7 /* Transaction.swift in Sources */,
 				42907EC92140215300AA72B7 /* TransactionsViewController.swift in Sources */,
+				42907EDF214040B600AA72B7 /* TransactionsStorage+UITableViewDataSource.swift in Sources */,
 				42907EDA21402B8300AA72B7 /* TransactionsStorage.swift in Sources */,
 				42907ED221402AD400AA72B7 /* TransactionRate.swift in Sources */,
 				42907EDC21402B9F00AA72B7 /* RatesManager.swift in Sources */,

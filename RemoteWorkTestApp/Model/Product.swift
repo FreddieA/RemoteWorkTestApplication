@@ -8,6 +8,16 @@
 
 import Foundation
 
-struct Product {
+class Product {
     var transactions: [Transaction]
+    let sku: String
+    
+    init(sku: String, transactions: [Transaction] = []) {
+        self.sku = sku
+        self.transactions = transactions
+    }
+    
+    var transactionsTitle: String {
+        return "\(transactions.count) transactions"
+    }
 }

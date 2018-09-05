@@ -9,14 +9,15 @@
 import Foundation
 
 class RatesManager: PlistDataParser {
-    
+    typealias Element = TransactionRate
+
     private(set) var rates: [TransactionRate]
     
     required init(dataArray: NSArray) {
         rates = RatesManager.parseDataArray(dataArray)
     }
-    
-    static func parseDataArray<TransactionRate>(_ array: NSArray) -> [TransactionRate] {
+
+    static func parseDataArray(_ array: NSArray) -> [TransactionRate] {
         return []
     }
 }

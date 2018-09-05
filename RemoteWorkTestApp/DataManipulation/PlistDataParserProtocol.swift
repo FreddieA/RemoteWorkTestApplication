@@ -9,10 +9,12 @@
 import Foundation
 
 protocol PlistDataParser {
+    associatedtype Element
+    
     init(plistFileName: String)
     init(dataArray: NSArray)
     
-    static func parseDataArray<T>(_ array: NSArray) -> [T]
+    static func parseDataArray(_ array: NSArray) -> [Element]
 }
 
 extension PlistDataParser {

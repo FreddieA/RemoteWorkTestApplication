@@ -8,11 +8,21 @@
 
 import UIKit
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: UITableViewController {
+    
+    private let storage = TransactionsStorage(plistFileName: "transactions")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.dataSource = storage
+        tableView.tableFooterView = UIView()
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
