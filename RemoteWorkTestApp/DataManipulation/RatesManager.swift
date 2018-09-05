@@ -10,6 +10,8 @@ import Foundation
 
 class RatesManager: PlistDataParser {
     typealias Element = TransactionRate
+    
+    static let shared = RatesManager(plistFileName: "rates")
 
     private(set) var rates: [TransactionRate]
     
@@ -18,6 +20,12 @@ class RatesManager: PlistDataParser {
     }
 
     static func parseDataArray(_ array: NSArray) -> [TransactionRate] {
-        return []
-    }
+        var rates = [TransactionRate]()
+        for transactionRateDictionary in array {
+            if let rate = TransactionRate.init(dictionary: transactionRateDictionary) {
+                rates.append(rate)
+            }
+        }
+        return rates
+     }
 }

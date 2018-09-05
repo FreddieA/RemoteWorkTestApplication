@@ -12,6 +12,7 @@ class TransactionsStorage: NSObject, PlistDataParser {
     typealias Element = Product
     
     private(set) var products: [Product]
+    private var selectedProductSku: String?
     
     required init(dataArray: NSArray) {
         products = TransactionsStorage.parseDataArray(dataArray)
@@ -30,5 +31,14 @@ class TransactionsStorage: NSObject, PlistDataParser {
             }
         }
         return productsDict.map { return Product(sku: $0, transactions: $1) }
+    }
+    
+    var selectedProduct: Product? {
+        set {
+            selectedProductSku = newValue?.sku
+        }
+        get {
+            return products.filter { $0.sku == selectedProductSku }.first
+        }
     }
 }

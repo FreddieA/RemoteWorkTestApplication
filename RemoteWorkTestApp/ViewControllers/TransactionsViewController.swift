@@ -10,4 +10,62 @@ import UIKit
 
 class TransactionsViewController: UITableViewController {
     
+    private let cellReuseIdentifier = "gbpAmountCellIdentifier"
+    
+    private weak var storage: TransactionsStorage?
+    private var targetCurrency: String?
+    
+    lazy var decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
+    convenience init(storage: TransactionsStorage, _ currency: String = "GBP") {
+        self.init(style: .plain)
+        self.storage = storage
+        self.targetCurrency = currency
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "Transactions for \(storage?.selectedProduct?.sku ?? "product")"
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let transactions = storage?.selectedProduct?.transactions else {
+            return 0
+        }
+        return transactions.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let transactions = storage?.selectedProduct?.transactions else {
+            return UITableViewCell()
+        }
+        let transaction = transactions[indexPath.row]
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) {
+            populate(cell: cell, with: transaction)
+            return cell
+        } else {
+            let cell = UITableViewCell.init(style: .value1, reuseIdentifier: cellReuseIdentifier)
+            populate(cell: cell, with: transaction)
+            return cell
+        }
+    }
+    
+    private func populate(cell: UITableViewCell, with transaction: Transaction) {
+        guard let currency = targetCurrency else {
+            return
+        }
+        
+        decimalFormatter.currencyCode = currency
+        
+        cell.textLabel?.text = transaction.amount.stringValue
+        if let convertedAmount = transaction.convertedAmmount(currency: currency) {
+            cell.detailTextLabel?.text = decimalFormatter.string(from: convertedAmount)
+        }
+    }
 }

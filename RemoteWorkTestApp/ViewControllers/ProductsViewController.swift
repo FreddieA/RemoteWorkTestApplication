@@ -14,7 +14,6 @@ class ProductsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         tableView.dataSource = storage
         tableView.tableFooterView = UIView()
@@ -23,6 +22,8 @@ class ProductsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        storage.selectedProduct = storage.products[indexPath.row]
+        self.navigationController?.pushViewController(TransactionsViewController(storage: storage), animated: true)
     }
 }
 

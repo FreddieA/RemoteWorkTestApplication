@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Product {
+struct Product {
     var transactions: [Transaction]
     let sku: String
     
