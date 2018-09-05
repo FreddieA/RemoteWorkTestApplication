@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ProductsViewController.swift
 //  RemoteWorkTestApp
 //
 //  Created by Mikhail Kirillov on 05/09/2018.
@@ -8,18 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ProductsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
