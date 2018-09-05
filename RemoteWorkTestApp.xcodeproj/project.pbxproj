@@ -15,6 +15,12 @@
 		42907EC5214020E600AA72B7 /* rates.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42907EC3214020E600AA72B7 /* rates.plist */; };
 		42907EC6214020E600AA72B7 /* transactions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42907EC4214020E600AA72B7 /* transactions.plist */; };
 		42907EC92140215300AA72B7 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907EC82140215300AA72B7 /* TransactionsViewController.swift */; };
+		42907ED021402AC900AA72B7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ECF21402AC900AA72B7 /* Transaction.swift */; };
+		42907ED221402AD400AA72B7 /* TransactionRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED121402AD400AA72B7 /* TransactionRate.swift */; };
+		42907ED421402ADC00AA72B7 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED321402ADC00AA72B7 /* Product.swift */; };
+		42907ED621402B4000AA72B7 /* PlistDataParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */; };
+		42907EDA21402B8300AA72B7 /* TransactionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907ED921402B8300AA72B7 /* TransactionsStorage.swift */; };
+		42907EDC21402B9F00AA72B7 /* RatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42907EDB21402B9F00AA72B7 /* RatesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		42907EC3214020E600AA72B7 /* rates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rates.plist; sourceTree = "<group>"; };
 		42907EC4214020E600AA72B7 /* transactions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = transactions.plist; sourceTree = "<group>"; };
 		42907EC82140215300AA72B7 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		42907ECF21402AC900AA72B7 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		42907ED121402AD400AA72B7 /* TransactionRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRate.swift; sourceTree = "<group>"; };
+		42907ED321402ADC00AA72B7 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistDataParserProtocol.swift; sourceTree = "<group>"; };
+		42907ED921402B8300AA72B7 /* TransactionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsStorage.swift; sourceTree = "<group>"; };
+		42907EDB21402B9F00AA72B7 /* RatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,8 @@
 		42907EAD21400D9D00AA72B7 /* RemoteWorkTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				42907ECE21402AA300AA72B7 /* DataManipulation */,
+				42907ECD21402A9C00AA72B7 /* Model */,
 				42907ECA214021AF00AA72B7 /* Application */,
 				42907EC0214020A300AA72B7 /* Assets */,
 				42907ECC214021DE00AA72B7 /* Configuration */,
@@ -127,6 +141,26 @@
 				42907EBA21400D9E00AA72B7 /* Info.plist */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		42907ECD21402A9C00AA72B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42907ECF21402AC900AA72B7 /* Transaction.swift */,
+				42907ED121402AD400AA72B7 /* TransactionRate.swift */,
+				42907ED321402ADC00AA72B7 /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42907ECE21402AA300AA72B7 /* DataManipulation */ = {
+			isa = PBXGroup;
+			children = (
+				42907ED521402B4000AA72B7 /* PlistDataParserProtocol.swift */,
+				42907ED921402B8300AA72B7 /* TransactionsStorage.swift */,
+				42907EDB21402B9F00AA72B7 /* RatesManager.swift */,
+			);
+			path = DataManipulation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +238,13 @@
 			files = (
 				42907EB121400D9D00AA72B7 /* ProductsViewController.swift in Sources */,
 				42907EAF21400D9D00AA72B7 /* AppDelegate.swift in Sources */,
+				42907ED621402B4000AA72B7 /* PlistDataParserProtocol.swift in Sources */,
+				42907ED021402AC900AA72B7 /* Transaction.swift in Sources */,
 				42907EC92140215300AA72B7 /* TransactionsViewController.swift in Sources */,
+				42907EDA21402B8300AA72B7 /* TransactionsStorage.swift in Sources */,
+				42907ED221402AD400AA72B7 /* TransactionRate.swift in Sources */,
+				42907EDC21402B9F00AA72B7 /* RatesManager.swift in Sources */,
+				42907ED421402ADC00AA72B7 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
