@@ -24,15 +24,4 @@ struct Transaction {
         self.currency = currency
         self.productSku = productSku
     }
-    
-    func convertedAmmount(currency: String) -> NSDecimalNumber? {
-        guard currency != self.currency else {
-            return amount
-        }
-        
-        guard let transactionRate = (RatesManager.shared.rates.filter { $0.from == self.currency && $0.to == currency }).first else {
-            return nil
-        }
-        return self.amount.multiplying(by: transactionRate.rate)
-    }
 }

@@ -30,6 +30,7 @@ class TransactionsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.allowsSelection = false
         title = "Transactions for \(storage?.selectedProduct?.sku ?? "product")"
     }
     
@@ -60,12 +61,13 @@ class TransactionsViewController: UITableViewController {
         guard let currency = targetCurrency else {
             return
         }
+        decimalFormatter.currencyCode = transaction.currency
+        cell.textLabel?.text = decimalFormatter.string(from: transaction.amount)
         
         decimalFormatter.currencyCode = currency
-        
-        cell.textLabel?.text = transaction.amount.stringValue
-        if let convertedAmount = transaction.convertedAmmount(currency: currency) {
-            cell.detailTextLabel?.text = decimalFormatter.string(from: convertedAmount)
-        }
+        cell.detailTextLabel?.text = decimalFormatter.string(from: TransactionRate.convert(value: transaction.amount,
+                                                                                     fromCurrency: transaction.currency,
+                                                                                     toCurrency: currency,
+                                                                                     fromArray: RatesManager.shared.rates))
     }
 }
