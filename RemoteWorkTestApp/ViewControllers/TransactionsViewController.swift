@@ -63,11 +63,22 @@ class TransactionsViewController: UITableViewController {
         }
         decimalFormatter.currencyCode = transaction.currency
         cell.textLabel?.text = decimalFormatter.string(from: transaction.amount)
-        cell.detailTextLabel?.textAlignment = .left
         
         decimalFormatter.currencyCode = currency
         if let decimalRate = TransactionRate.convertValue(rateValue: transaction.amount, rateTuple: (transaction.currency, currency), using: RatesManager.shared.rates) {
             cell.detailTextLabel?.text = decimalFormatter.string(from: decimalRate)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let product = storage?.selectedProduct, let currency = targetCurrency else {
+            return nil
+        }
+        
+        decimalFormatter.currencyCode = currency
+        if let totalString = decimalFormatter.string(from: product.transactionsTotal(currency: currency)) {
+            return "Total: " + totalString
+        }
+        return "Could not get total amount"
     }
 }

@@ -20,4 +20,15 @@ struct Product {
     var transactionsTitle: String {
         return "\(transactions.count) transactions"
     }
+    
+    func transactionsTotal(currency: String) -> NSDecimalNumber {
+        return transactions.reduce(0, { (result, transaction) -> NSDecimalNumber in
+            guard let convertedResult = TransactionRate.convertValue(rateValue: transaction.amount,
+                                                               rateTuple: (transaction.currency, currency),
+                                                               using: RatesManager.shared.rates) else {
+                                                                return result
+            }
+            return result.adding(convertedResult, withBehavior: TransactionRate.decimalBehaviour)
+        })
+    }
 }

@@ -30,12 +30,22 @@ struct TransactionRate {
             return rateValue
         }
         if let rate = (rates.filter { return $0.from == rateTuple.0 && $0.to == rateTuple.1 }).first {
-            return rateValue.multiplying(by: rate.rate)
+            return rateValue.multiplying(by: rate.rate, withBehavior: TransactionRate.decimalBehaviour)
         }
         guard let nextRate = (rates.filter { return $0.from == rateTuple.0 }).first else {
             return nil
         }
-        let nextValue = rateValue.multiplying(by: nextRate.rate)
+        let nextValue = rateValue.multiplying(by: nextRate.rate, withBehavior: TransactionRate.decimalBehaviour)
         return convertValue(rateValue: nextValue, rateTuple: (nextRate.to, rateTuple.1), using: rates)
     }
+    
+    static var decimalBehaviour: NSDecimalNumberBehaviors = {
+    let handler = NSDecimalNumberHandler(roundingMode: .bankers,
+                                         scale: 2,
+                                         raiseOnExactness: false,
+                                         raiseOnOverflow: false,
+                                         raiseOnUnderflow: false,
+                                         raiseOnDivideByZero: false)
+        return handler
+    }()
 }
