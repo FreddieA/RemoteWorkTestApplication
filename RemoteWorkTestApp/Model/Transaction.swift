@@ -24,4 +24,15 @@ struct Transaction {
         self.currency = currency
         self.productSku = productSku
     }
+    
+    init(amount: NSDecimalNumber, currency: String, sku: String) {
+        self.amount = amount
+        self.productSku = sku
+        self.currency = currency
+    }
+    
+    func transactionByApplyingRate(_ rate: TransactionRate) -> Transaction {
+        let amount = self.amount.multiplying(by: rate.rate)
+        return Transaction(amount: amount, currency: rate.to, sku: self.productSku)
+    }
 }

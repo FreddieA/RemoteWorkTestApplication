@@ -30,7 +30,7 @@ class TransactionsStorage: NSObject, PlistDataParser {
                 }
             }
         }
-        return productsDict.map { return Product(sku: $0, transactions: $1) }
+        return productsDict.map { return Product(sku: $0, transactions: $1) }.sorted { $0.sku < $1.sku }
     }
     
     var selectedProduct: Product? {

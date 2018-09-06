@@ -63,11 +63,11 @@ class TransactionsViewController: UITableViewController {
         }
         decimalFormatter.currencyCode = transaction.currency
         cell.textLabel?.text = decimalFormatter.string(from: transaction.amount)
+        cell.detailTextLabel?.textAlignment = .left
         
         decimalFormatter.currencyCode = currency
-        cell.detailTextLabel?.text = decimalFormatter.string(from: TransactionRate.convert(value: transaction.amount,
-                                                                                     fromCurrency: transaction.currency,
-                                                                                     toCurrency: currency,
-                                                                                     fromArray: RatesManager.shared.rates))
+        if let decimalRate = TransactionRate.convertValue(rateValue: transaction.amount, rateTuple: (transaction.currency, currency), using: RatesManager.shared.rates) {
+            cell.detailTextLabel?.text = decimalFormatter.string(from: decimalRate)
+        }
     }
 }
